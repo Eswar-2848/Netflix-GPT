@@ -14,7 +14,11 @@
 - SignUp & SignIn using firebase
 - Created Redux Store with userSlice
 - Update Profile
-- Fetch from TMDB Movies
+- BugFix: If the user is not logged in Redirect/ browse to Login Page and vice-versa
+- Unsubscribed to onAuthStateChanged callback
+- Add hardcoded values to the constants files
+- Register TMDB API & create an app & get access token
+- Get Data from TMDB Now Playing Movies list API
 
 # Features
 

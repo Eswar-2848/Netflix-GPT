@@ -10,14 +10,13 @@ import Header from './Header'
 //utils
 import { auth } from '../utils/firebase';
 import { checkValidData } from '../utils/validate';
+import { USER_AVATAR } from '../utils/constants';
 
-// Navigation & State Management
-import { useNavigate } from 'react-router-dom';
+// State Management
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
 
 const Login = () => {
-    const navigate=useNavigate();
     const dispatch=useDispatch();
     const [isSignInForm, setIsSignInForm]= useState(true);
     const [errors, setErrors]=useState({});
@@ -58,12 +57,13 @@ const Login = () => {
                     setErrorMessage(null);
 
                     updateProfile(auth.currentUser, {
-                        displayName: name.current.value, photoURL: ""
+                        displayName: name.current.value, photoURL: USER_AVATAR
                         }).then(() => {
                         // Profile updated!
+                            //Destructuring and adding to store since it has extra fields also
+                            console.log(auth.currentUser)
                             const {uid, email, displayName, photoURL}=auth.currentUser;
                             dispatch(addUser({uid, email, displayName, photoURL}))
-                            navigate('/browse')
                         }).catch((error) => {
                         setErrorMessage(error.message);
                     });
@@ -81,13 +81,11 @@ const Login = () => {
             .then((userCredential) => {
                 // Signed in 
                 const user = userCredential.user;
-                console.log(user);
                 // ✅ Reset Fields After Successful Sign-In
                 email.current.value = "";
                 password.current.value = "";
                 setErrors({});
                 setErrorMessage(null);
-                navigate('/browse');
             })
             .catch((error) => {
                 const errorCode = error.code;
