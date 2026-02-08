@@ -49,7 +49,6 @@ const Login = () => {
             createUserWithEmailAndPassword(auth, email.current.value, password.current.value)
                 .then((userCredential) => {
                     const user = userCredential.user;
-                    // console.log(user);
                     // ✅ Reset Fields After Successful Sign-Up
                     email.current.value = "";
                     password.current.value = "";
@@ -61,7 +60,6 @@ const Login = () => {
                         }).then(() => {
                         // Profile updated!
                             //Destructuring and adding to store since it has extra fields also
-                            console.log(auth.currentUser)
                             const {uid, email, displayName, photoURL}=auth.currentUser;
                             dispatch(addUser({uid, email, displayName, photoURL}))
                         }).catch((error) => {
@@ -99,7 +97,7 @@ const Login = () => {
     <div>
         <Header />
         <div className='absolute'>
-            <img src="https://assets.nflxext.com/ffe/siteui/vlv3/6863f6e8-d419-414d-b5b9-7ef657e67ce4/web/IN-en-20250602-TRIFECTA-perspective_27a3fdfa-126f-4148-b153-55d60b51be6a_large.jpg" alt="backgroundImg" />
+            <img src="/images/background.jpg" alt="backgroundImg" />
         </div>
         <form className="w-3/12 absolute bg-[#0f0f0fE6] p-12 my-36 mx-auto left-0 right-0 text-white">
             <h1 className='font-bold text-3xl pb-4'>Sign {isSignInForm ? 'In' : 'Up'}</h1>

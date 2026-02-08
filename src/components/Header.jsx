@@ -6,7 +6,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { addUser, removeUser } from "../utils/userSlice";
-import { LOGO, USER_AVATAR } from "../utils/constants";
+import { USER_AVATAR } from "../utils/constants";
 
 
 const Header = () => {
@@ -43,7 +43,7 @@ const Header = () => {
 
   return (
     <div className="absolute w-screen px-8 py-2 bg-gradient-to-b from-black z-10 flex justify-between">
-        <img src={LOGO} alt="logo" className="w-44"/>
+        <img src="/images/netflix-logo.png" alt="logo" className="w-44"/>
         {user && 
           <div className="flex p-2">
             <img className="w-12 h-12" src={user.photoURL} alt="usericon" />
