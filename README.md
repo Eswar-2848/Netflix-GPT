@@ -19,6 +19,8 @@
 - Add hardcoded values to the constants files
 - Register TMDB API & create an app & get access token
 - Get Data from TMDB Now Playing Movies list API
+- Video Background(Embedded youtube video)
+- Build Secondary Container
 
 # Features
 
