@@ -17,3 +17,9 @@ export const TYPE_TO_STATE_KEY = {
   top_rated: "topRatedMovies",
   upcoming: "upcomingMovies",
 };
+
+export const SUPPORTED_LANGUAGES = [
+  { code: "en", name: "English" },
+  { code: "hindi", name: "Hindi" },
+  { code: "spanish", name: "Spanish" },
+];

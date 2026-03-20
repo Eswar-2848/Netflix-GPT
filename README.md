@@ -21,6 +21,8 @@
 - Get Data from TMDB Now Playing Movies list API
 - Video Background(Embedded youtube video)
 - Build Secondary Container
+- GPT Search Feature
+- Multi-language Feature in our App
 
 # Features
 
