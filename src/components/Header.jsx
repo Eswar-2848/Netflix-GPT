@@ -62,7 +62,7 @@ const Header = () => {
               {SUPPORTED_LANGUAGES.map((lang)=><option key={lang.code} value={lang.code}>{lang.name}</option>)}
             </select>
             }
-            <button className="py-2 px-4 mx-4 my-2 bg-red-600 text-white rounded-lg mx-4" onClick={handleGptSearch}>
+            <button className="py-2 px-4 mx-4 my-2 bg-red-600 text-white rounded-lg mx-4 cursor-pointer" onClick={handleGptSearch}>
             {showGptSearch ? "Home Page" : "GPT Search"}</button>
             <img className="w-12 h-12" src={user.photoURL} alt="usericon" />
             <button className="font-bold text-white" onClick={handleSignOut}>Sign Out</button>

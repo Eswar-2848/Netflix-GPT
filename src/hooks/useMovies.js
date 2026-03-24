@@ -1,10 +1,12 @@
 import { useDispatch } from "react-redux";
-import { API_OPTIONS } from "../utils/constants";
+import { useSelector } from "react-redux";
+import { API_OPTIONS, TYPE_TO_STATE_KEY } from "../utils/constants";
 import { addMovies } from "../utils/movieSlice";
 import { useEffect } from "react";
 
 const useMovies = () => {
   const dispatch = useDispatch();
+  const movies = useSelector((store) => store.movies);
   const categories = ["now_playing", "popular", "top_rated", "upcoming"];
   const getNowPlayingMovies = async (category) => {
     const data = await fetch(
@@ -16,10 +18,15 @@ const useMovies = () => {
   };
 
   useEffect(() => {
-    for (let category of categories) {
-      getNowPlayingMovies(category);
-    }
-  }, []);
+    categories.forEach((category) => {
+      const stateKey = TYPE_TO_STATE_KEY[category];
+
+      // Only fetch if this category is not already in the store
+      if (!movies[stateKey]?.length) {
+        getNowPlayingMovies(category);
+      }
+    });
+  }, [movies]);
 };
 
 export default useMovies;
