@@ -23,6 +23,12 @@
 - Build Secondary Container
 - GPT Search Feature
 - Multi-language Feature in our App
+- Get Open AI Api key
+- Gpt Search API Call
+- fetched getMoviesSuggestions from TMDB
+- Memoization
+- Added .env file
+- Made our Site Responsive
 
 # Features
 
