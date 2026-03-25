@@ -31,6 +31,7 @@ const Login = () => {
         email.current.value = "";
         password.current.value = "";
         if (name.current) name.current.value = "";
+        setErrors({});
         setErrorMessage(null);
     }, [isSignInForm]);
 
@@ -97,18 +98,24 @@ const Login = () => {
     <div>
         <Header />
         <div className='absolute'>
-            <img className="h-screen w-screen object-cover" src="/images/background.jpg" alt="backgroundImg" />
+            <img className="fixed top-0 left-0 h-screen w-screen object-cover" src="/images/background.jpg" alt="backgroundImg" />
         </div>
         <form className="w-full md:w-3/12 absolute bg-[#0f0f0fE6] p-12 my-36 mx-auto left-0 right-0 text-white">
             <h1 className='font-bold text-3xl pb-4'>Sign {isSignInForm ? 'In' : 'Up'}</h1>
-            <input ref={email} type="text" placeholder="Email Address" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.email ? 'border-red-600' : 'border-[#5f5f5f]'}`}/>
+            <input ref={email} type="text" placeholder="Email Address" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.email ? 'border-red-600' : 'border-[#5f5f5f]'}`} onChange={() => {
+                setErrors(prev => ({ ...prev, email: null }));
+            }}/>
             {errors.email && (<p className="text-red-600">{errors.email}</p>)}
             {!isSignInForm && <>
-                <input ref={name} type="text" placeholder="Full Name" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.name ? 'border-red-600' : 'border-[#5f5f5f]'}`}/>
+                <input ref={name} type="text" placeholder="Full Name" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.name ? 'border-red-600' : 'border-[#5f5f5f]'}`} onChange={() => {
+                setErrors(prev => ({ ...prev, name: null }));
+            }}/>
                 <p className="text-red-600">{errors.name}</p>
             </>
             }
-            <input ref={password} type="password" placeholder="Password" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.password ? 'border-red-600' : 'border-[#5f5f5f]'}`}/>
+            <input ref={password} type="password" placeholder="Password" className={`p-4 my-2 w-full border-2 rounded-sm placeholder-[#bab8b8] bg-[#0f0f0f] ${errors.password ? 'border-red-600' : 'border-[#5f5f5f]'}`} onChange={() => {
+                setErrors(prev => ({ ...prev, password: null }));
+            }}/>
             {errors.password && (<p className="text-red-600">{errors.password}</p>)}
             {errorMessage && (<p className="text-red-600">{errorMessage}</p>)}
             <button className="p-2 my-2 bg-red-700 w-full rounded-sm cursor-pointer" onClick={handleBtnClick}>Sign {isSignInForm ? 'In' : 'Up'}</button>
