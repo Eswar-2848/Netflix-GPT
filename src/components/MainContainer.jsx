@@ -1,5 +1,5 @@
 import { useSelector } from "react-redux";
-import VideoTitle from "./VIdeoTitle";
+import VideoTitle from "./VideoTitle";
 import VideoBackground from "./VideoBackground";
 
 const MainContainer=()=>{
